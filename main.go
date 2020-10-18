@@ -39,13 +39,19 @@ func getOneQuote(w http.ResponseWriter, r *http.Request) {
     quoteID := mux.Vars(r)["id"]
     for _, singleQuote := range quotes {
         if singleQuote.ID == quoteID {
-            json.NewEncoder(w).Encode(singleQuote)
+            err := json.NewEncoder(w).Encode(singleQuote)
+            if err != nil {
+                fmt.Printf("There was an error. \n")
+            }
         }
     }
 }
 
 func getAllQuotes(w http.ResponseWriter, r *http.Request) {
-    json.NewEncoder(w).Encode(quotes)
+    err := json.NewEncoder(w).Encode(quotes)
+    if err != nil {
+        fmt.Printf("There was an error. \n")
+    }
 }
 
 func main() {
