@@ -28,6 +28,11 @@ var quotes = allQuotes{
         Author: "Bette Midler",
         Content: "I firmly believe that with the right footwear one can rule the world.",
     },
+    {
+        ID: "3",
+        Author: "Gianni Versace",
+        Content: "Don't be into trends. Don't make fashion own you, but you decide what you are, what you want to express by the way you dress and the way to live.",
+    },
 }
 
 
