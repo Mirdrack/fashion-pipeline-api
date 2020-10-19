@@ -4,6 +4,7 @@ import (
     "os"
     "fmt"
     "log"
+    "math/rand"
     "net/http"
     "encoding/json"
 
@@ -71,6 +72,14 @@ func getOneQuote(w http.ResponseWriter, r *http.Request) {
     }
 }
 
+func getRandomQuote(w http.ResponseWriter, r *http.Request) {
+    randomQuote := quotes[rand.Intn(len(quotes))]
+    err := json.NewEncoder(w).Encode(randomQuote)
+    if err != nil {
+        fmt.Printf("There was an error. \n")
+    }
+}
+
 func getAllQuotes(w http.ResponseWriter, r *http.Request) {
     err := json.NewEncoder(w).Encode(quotes)
     if err != nil {
@@ -86,6 +95,7 @@ func main() {
     router := mux.NewRouter().StrictSlash(true)
     router.HandleFunc("/", homeLink)
     router.HandleFunc("/quotes", getAllQuotes).Methods("GET")
+    router.HandleFunc("/quotes/random", getRandomQuote).Methods("GET")
     router.HandleFunc("/quotes/{id}", getOneQuote).Methods("GET")
     log.Fatal(http.ListenAndServe(addr, router))
 }
