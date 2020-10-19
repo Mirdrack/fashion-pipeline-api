@@ -13,5 +13,4 @@ jobs:
           echo Deploying
           curl https://cli-assets.heroku.com/install.sh | sh
           export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
-          heroku login
           git push heroku master
