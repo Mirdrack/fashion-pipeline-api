@@ -64,5 +64,5 @@ func main() {
     router.HandleFunc("/", homeLink)
     router.HandleFunc("/quotes", getAllQuotes).Methods("GET")
     router.HandleFunc("/quotes/{id}", getOneQuote).Methods("GET")
-    log.Fatal(http.ListenAndServe(":8000", router))
+    log.Fatal(http.ListenAndServe(":80", router))
 }
