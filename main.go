@@ -21,16 +21,26 @@ type allQuotes []quote
 var quotes = allQuotes{
     {
         ID: "1",
+        Author: "Diana Vreeland",
+        Content: "Fashion is part of the daily air and it changes all the time, with all the events. You can even see the approaching of a revolution in clothes. You can see and feel everything in clothes.",
+    },
+    {
+        ID: "2",
         Author: "Karl Lagerfeld",
         Content: "One is never over-dressed or under-dressed with a Little Black Dress.",
     },
     {
-        ID: "2",
+        ID: "3",
+        Author: "Miuccia Prada",
+        Content: "What you wear is how you present yourself to the world, especially today, when human contacts are so quick. Fashion is instant language.",
+    },
+    {
+        ID: "4",
         Author: "Bette Midler",
         Content: "I firmly believe that with the right footwear one can rule the world.",
     },
     {
-        ID: "3",
+        ID: "5",
         Author: "Gianni Versace",
         Content: "Don't be into trends. Don't make fashion own you, but you decide what you are, what you want to express by the way you dress and the way to live.",
     },
