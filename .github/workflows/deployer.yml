@@ -8,9 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      run: |
-        echo Deploying
-        curl https://cli-assets.heroku.com/install.sh | sh
-        export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
-        heroku login
-        git push heroku master
+      - name: golangci-deploy
+        run: |
+          echo Deploying
+          curl https://cli-assets.heroku.com/install.sh | sh
+          export HEROKU_API_KEY=${{secrets.HEROKU_API_KEY}}
+          heroku login
+          git push heroku master
