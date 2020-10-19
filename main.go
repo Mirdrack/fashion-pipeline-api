@@ -1,6 +1,7 @@
 package main
 
 import (
+    "os"
     "fmt"
     "log"
     "net/http"
@@ -35,6 +36,14 @@ var quotes = allQuotes{
     },
 }
 
+func determineListenAddress() (string, error) {
+  port := os.Getenv("PORT")
+  if port == "" {
+    return "", fmt.Errorf("$PORT not set")
+  }
+  return ":" + port, nil
+}
+
 
 func homeLink(w http.ResponseWriter, r *http.Request) {
     fmt.Fprintf(w, "Welcome to the Fashion Pipeline API!\n")
@@ -60,9 +69,13 @@ func getAllQuotes(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+    addr, err := determineListenAddress()
+    if err != nil {
+        log.Fatal(err)
+    }
     router := mux.NewRouter().StrictSlash(true)
     router.HandleFunc("/", homeLink)
     router.HandleFunc("/quotes", getAllQuotes).Methods("GET")
     router.HandleFunc("/quotes/{id}", getOneQuote).Methods("GET")
-    log.Fatal(http.ListenAndServe(":80", router))
+    log.Fatal(http.ListenAndServe(addr, router))
 }
