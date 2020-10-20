@@ -220,6 +220,11 @@ var quotes = allQuotes{
         Author: "Yves Saint Laurent",
         Content: "Over the years I have learned that what is important in a dress is the woman who's wearing it.",
     },
+    {
+        ID: "41",
+        Author: "Bo Derek",
+        Content: "Whoever said that money can't buy happiness, simply didn't know where to go shopping.",
+    },
 }
 
 func determineListenAddress() (string, error) {
